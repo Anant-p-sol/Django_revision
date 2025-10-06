@@ -7,6 +7,16 @@
         <div class="container py-5">
           <form action={% url 'save_data' %} method="POST" class="container mx-auto card p-4">
           {% csrf_token %}
+
+          {% for error in messages %}
+            {% if error.tags == "error" %}
+              <div class="alert alert-danger">{{ error }}</div>
+            {% endif %}
+            {% if error.tags == "success" %}
+              <div class="alert alert-success">{{ error }}</div>
+            {% endif %}
+          {% endfor %}
+
           <div class="mb-3">
           <label for="title" class="text-lg">Note Title</label>
           <input name="Title" id="title" type="text" class="form-control" placeholder="Enter your Note Title">

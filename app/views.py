@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
 
 
 # Create your views here.
@@ -13,4 +14,8 @@ def save_data_view(request):
     title = request.POST.get("Title","")
     description = request.POST.get("Description","")
 
-    return HttpResponse(f"data save Title = {title} Description = {description}")
+    if not title and not description:
+        messages.error(request, "Both Title and Description cannot be empty.")
+        return redirect('home')
+    messages.success(request, "Data saved successfully.")
+    return redirect('home')
