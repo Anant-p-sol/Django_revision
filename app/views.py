@@ -5,7 +5,10 @@ from .models import Note
 
 # Create your views here.
 def home_view(request):
-    return render(request, 'index.html')
+    notes = Note.objects.all()
+    return render(request, 'index.html', context ={
+        "notes":notes
+    })
 def about_view(request):
     return render(request, 'about.html')
 
@@ -21,4 +24,11 @@ def save_data_view(request):
     note = Note(title=title, description=description)
     note.save()
     messages.success(request, "Data saved successfully.")
+    return redirect('home')
+
+
+def delete_view(request , id):
+    note = Note.objects.get(id=id)
+    note.delete()
+    messages.success(request, "Delete success.")
     return redirect('home')

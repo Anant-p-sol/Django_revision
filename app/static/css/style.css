@@ -1,22 +1,80 @@
+/* 🌈 Base Styles */
+body {
+  background: linear-gradient(135deg, #f0f4ff, #e8f5e9);
+  font-family: "Poppins", sans-serif;
+}
+
+/* 🔹 Header Section */
 header {
-    background-color: #3d81c5;
-    padding: 20px;
-    text-align: center;
+  background-color: #3d81c5;
+  padding: 20px;
+  text-align: center;
 }
+
 h1 {
-    color: #343a40;
+  color: #343a40;
 }
+
 p {
-    font-size: 18px;
-    color: #6c757d;
+  font-size: 18px;
+  color: #6c757d;
 }
+
+/* 🧠 Glass Effect Cards */
+.card-glass {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.card-glass:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 📝 Note Card Animations */
 .note-card {
-    transition: all 0.3s ease-in-out;
-  }
-  .note-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  }
-  .btn {
-    border-radius: 20px;
-  }
+  transition: all 0.3s ease-in-out;
+}
+
+.note-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 🧩 Input Fields */
+.form-control {
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1.5px solid #d9e0f0;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* 🔘 Buttons */
+.btn {
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-rounded {
+  border-radius: 50px;
+  padding: 8px 20px;
+}
+
+/* 🌈 Gradient Text */
+.text-gradient {
+  background: linear-gradient(90deg, #007bff, #00bcd4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ⚡ Card Footer */
+.card-footer {
+  background: transparent;
+}
