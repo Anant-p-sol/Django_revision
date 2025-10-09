@@ -1,6 +1,4 @@
-{% extends 'base.html' %}
-{% block title %} {{ block.super }} - Home page {% endblock title %} 
-{% block content %}
+{% extends 'base.html' %} {% block title %} {{ block.super }} - Home page {% endblock title %} {% block content %}
 
 <div class="container py-5">
   <div class="card card-glass mx-auto p-5 shadow-lg border-0 rounded-4">
@@ -46,6 +44,20 @@
         ></textarea>
       </div>
 
+      <!-- Publish Checkbox -->
+      <div class="form-check mb-3">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="on"
+          id="is_published"
+          name="is_published"
+        />
+        <label class="form-check-label" for="is_published">
+          Publish this note
+        </label>
+      </div>
+
       <!-- Submit Button -->
       <div class="text-center mt-4">
         <button
@@ -72,6 +84,15 @@
       {% for note in notes %}
       <div class="col-md-4">
         <div class="card note-card border-0 rounded-4 shadow-md p-3 card-glass">
+          <div>
+            {% if note.is_published %}
+            <div class="d-flex justify-content-end mb-2">
+              <span class="badge rounded-pill bg-success shadow-sm px-2 py-1" style="font-size: 0.95rem; font-weight: 600; letter-spacing: 0.5px;">
+              <i class="bi bi-check-circle-fill me-1"></i> Published
+              </span>
+            </div>
+            {% endif %}
+          </div>
           <div class="card-body">
             <h5 class="card-title fw-bold text-dark">
               <i class="bi bi-sticky"></i> {{ note.title }}
@@ -79,10 +100,10 @@
             <p class="card-text text-muted mt-2" style="min-height: 80px">
               {{ note.description }}
             </p>
-          </div>
-          
+            
+            </div>
 
-          <div
+            <div
             class="card-footer d-flex justify-content-between align-items-center border-0"
           >
             <small class="text-secondary">

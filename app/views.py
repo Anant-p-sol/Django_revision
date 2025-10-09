@@ -17,12 +17,13 @@ def save_data_view(request):
     print(request.POST)
     title = request.POST.get("Title","").strip()
     description = request.POST.get("Description","").strip()
+    is_published = True if request.POST.get("is_published") == 'on' else False
 
     if not title and not description:
         messages.error(request, "Both Title and Description cannot be empty.")
         return redirect('home')
 
-    note = Note(title=title, description=description)
+    note = Note(title=title, description=description, is_published=is_published)
     note.save()
     messages.success(request, "Data saved successfully.")
     return redirect('home')
@@ -38,6 +39,7 @@ def updateview(request, id):
     if request.method == "POST":
         title = request.POST.get("Title","").strip()
         description = request.POST.get("Description","").strip()
+        is_published = True if request.POST.get("is_published") == 'on' else False
 
         if not title and not description:
             messages.error(request, "Both Title and Description cannot be empty.")
@@ -45,6 +47,7 @@ def updateview(request, id):
 
         note.title = title
         note.description = description
+        note.is_published = is_published
         note.save()
         messages.success(request, "Note updated successfully.")
         return redirect('home')
