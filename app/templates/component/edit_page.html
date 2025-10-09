@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% block title %} {{ block.super }} - Update page {% endblock title %} {% block content %}
+<div class="container py-5">
+  <div class="card card-glass mx-auto p-5 shadow-lg border-0 rounded-4">
+    <form action="{% url 'updateview_data' id=note.id %}" method="POST">
+      {% csrf_token %} {% include 'component/showMessages.html' %}
+
+      <!-- Form Header -->
+      <div class="container">
+      <div class="row">
+      <div class="col-md-10 text-center mb-4">
+        <h3 class="fw-bold text-gradient">
+          <i class="bi bi-pencil-square"></i> Update Note
+        </h3>
+        <p class="text-muted mb-0">Modify your existing note details below 🧩</p>
+      </div>
+      
+      <div class="col-md-2 d-flex justify-content-end align-items-start">
+        <a href="{% url 'home' %}" class="btn btn-link p-0" title="Cancel Edit" style="position: absolute; top: 20px; right: 20px;">
+          <i class="bi bi-x-lg fs-4"></i>
+        </a>
+      </div>
+      </div>
+      </div>
+      <!-- Note Title -->
+      <div class="mb-4">
+        <label for="title" class="form-label fw-semibold">
+          <i class="bi bi-sticky"></i>
+          Note Title
+        </label>
+        <input
+          type="text"
+          id="title"
+          name="Title"
+          class="form-control"
+          placeholder="Enter your Note Title"
+          value="{{ note.title }}"
+          required
+        />
+      </div>
+
+      <!-- Note Content -->
+      <div class="mb-4">
+        <label for="content" class="form-label fw-semibold">
+          <i class="bi bi-card-text"></i> Note Content
+        </label>
+        <textarea
+          id="content"
+          name="Description"
+          class="form-control"
+          rows="5"
+          placeholder="Write your note details here..."
+          required
+        >
+{{ note.description }}</textarea
+        >
+      </div>
+
+      <!-- Submit Button -->
+      <div class="text-center mt-4">
+        <button
+          type="submit"
+          style="width: 100%"
+          class="btn btn-primary btn-rounded shadow-sm px-4"
+        >
+          <i class="bi bi-pencil-square"></i> Update
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}
